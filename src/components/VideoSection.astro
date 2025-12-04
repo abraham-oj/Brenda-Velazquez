@@ -1,0 +1,35 @@
+<section class="video-wrapper">
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/TU_VIDEO_ID"
+      title="Video de Campaña"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
+
+<style>
+  .video-wrapper {
+    width: 100%;
+    background-color: #000; /* Fondo negro para cine, adiós blanco */
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0; /* Un poco de aire arriba y abajo */
+  }
+
+  .video-container {
+    width: 90%; /* En móvil ocupa casi todo */
+    max-width: 1000px; /* En PC tiene un límite elegante */
+    aspect-ratio: 16 / 9; /* Mantiene la proporción perfecta siempre */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra elegante */
+    border-radius: 12px; /* Bordes redondeados modernos */
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+</style>
