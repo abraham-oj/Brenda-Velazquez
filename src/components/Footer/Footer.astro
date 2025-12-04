@@ -1,0 +1,269 @@
+---
+export interface Props {
+  nombre: string;
+  partido: string;
+}
+
+const { nombre, partido } = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img
+            src="/images/logo-footer.svg"
+            alt={`${nombre} - ${partido}`}
+            width="180"
+            height="50"
+          />
+        </div>
+        <p class="footer-slogan">Trabajando por un futuro mejor para todos</p>
+        <div class="footer-credentials">
+          <p>Registro Oficial de Candidatura: CAND-2024-001</p>
+          <p>Fiscalía Especializada: FE/2024/12345</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="link-group">
+          <h4>Campaña</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#biografia">Biografía</a></li>
+            <li><a href="#propuestas">Propuestas</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="link-group">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#" target="_blank">Plan de Gobierno (PDF)</a></li>
+            <li><a href="#" target="_blank">Agenda de Eventos</a></li>
+            <li><a href="#" target="_blank">Voluntariado</a></li>
+            <li><a href="#" target="_blank">Prensa y Medios</a></li>
+            <li><a href="#" target="_blank">Transparencia</a></li>
+          </ul>
+        </div>
+
+        <div class="link-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" target="_blank">Aviso de Privacidad</a></li>
+            <li><a href="#" target="_blank">Términos y Condiciones</a></li>
+            <li><a href="#" target="_blank">Uso de Imagen</a></li>
+            <li><a href="#" target="_blank">Política de Donaciones</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">
+        <p>&copy; {year} {nombre}. Todos los derechos reservados.</p>
+        <p>
+          Campaña autorizada y regulada por las autoridades electorales
+          correspondientes.
+        </p>
+      </div>
+
+      <div class="footer-disclaimer">
+        <p>
+          Este sitio web es parte de la campaña electoral autorizada. Los fondos
+          utilizados provienen de donaciones registradas legalmente.
+        </p>
+        <p>Para reportar irregularidades: 800-123-4567</p>
+      </div>
+
+      <div class="back-to-top">
+        <button id="backToTop" aria-label="Volver arriba"> ↑ </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #1a365d;
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-logo img {
+    height: 50px;
+    width: auto;
+  }
+
+  .footer-slogan {
+    font-size: 1.2rem;
+    color: #cbd5e0;
+    margin: 0;
+  }
+
+  .footer-credentials {
+    font-size: 0.9rem;
+    color: #a0aec0;
+  }
+
+  .footer-credentials p {
+    margin: 0.25rem 0;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .link-group h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0066cc;
+  }
+
+  .link-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .link-group li {
+    margin-bottom: 0.75rem;
+  }
+
+  .link-group a {
+    color: #cbd5e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .link-group a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #2d3748;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .copyright p {
+    margin: 0.25rem 0;
+    color: #a0aec0;
+    font-size: 0.9rem;
+  }
+
+  .footer-disclaimer {
+    max-width: 400px;
+    color: #a0aec0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .footer-disclaimer p {
+    margin: 0.5rem 0;
+  }
+
+  .back-to-top button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0066cc;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .back-to-top button:hover {
+    background: #0052a3;
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 992px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 3rem 1rem 1.5rem;
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Botón para volver arriba
+  document.getElementById("backToTop")?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  // Mostrar/ocultar botón según scroll
+  window.addEventListener("scroll", () => {
+    const backToTop = document.getElementById("backToTop");
+    if (window.scrollY > 500) {
+      backToTop.style.opacity = "1";
+      backToTop.style.visibility = "visible";
+    } else {
+      backToTop.style.opacity = "0";
+      backToTop.style.visibility = "hidden";
+    }
+  });
+
+  // Inicializar opacidad del botón
+  document.addEventListener("DOMContentLoaded", () => {
+    const backToTop = document.getElementById("backToTop");
+    backToTop.style.opacity = "0";
+    backToTop.style.visibility = "hidden";
+    backToTop.style.transition = "opacity 0.3s ease, visibility 0.3s ease";
+  });
+</script>

@@ -1,0 +1,406 @@
+---
+const redesSociales = [
+  {
+    plataforma: "Facebook",
+    icono: "📘",
+    url: "#",
+    usuario: "@MariaGonzalezOficial",
+  },
+  { plataforma: "Twitter", icono: "🐦", url: "#", usuario: "@MGonzalez" },
+  {
+    plataforma: "Instagram",
+    icono: "📷",
+    url: "#",
+    usuario: "@maria.gonzalez.oficial",
+  },
+  {
+    plataforma: "YouTube",
+    icono: "▶️",
+    url: "#",
+    usuario: "Canal María González",
+  },
+  {
+    plataforma: "WhatsApp",
+    icono: "💬",
+    url: "#",
+    usuario: "Grupo de Campaña",
+  },
+];
+---
+
+<section id="contacto" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">Contáctanos</h2>
+    <p class="section-subtitle">
+      Únete a nuestro movimiento por un cambio positivo
+    </p>
+
+    <div class="contact-content">
+      <div class="contact-form">
+        <h3>Envíanos un mensaje</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Tu nombre completo"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Correo electrónico"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="Teléfono (opcional)"
+            />
+          </div>
+
+          <div class="form-group">
+            <select id="interes" name="interes" required>
+              <option value="">¿Cómo quieres participar?</option>
+              <option value="voluntario">Ser voluntario</option>
+              <option value="donacion">Hacer una donación</option>
+              <option value="eventos">Asistir a eventos</option>
+              <option value="info">Recibir información</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              placeholder="Tu mensaje..."
+              rows="5"
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox">
+              <input type="checkbox" required />
+              <span>Acepto recibir información sobre la campaña</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar mensaje</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <div class="info-card">
+          <h3>Información de contacto</h3>
+
+          <div class="contact-detail">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Oficina de Campaña</strong>
+              <p>Calle Principal #123, Centro</p>
+              <p>Ciudad, Estado</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span class="icon">📞</span>
+            <div>
+              <strong>Teléfono</strong>
+              <p>(55) 1234-5678</p>
+              <p>Lunes a Viernes 9:00 - 18:00</p>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span class="icon">✉️</span>
+            <div>
+              <strong>Correo electrónico</strong>
+              <p>contacto@mariagonzalez.com</p>
+              <p>prensa@mariagonzalez.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <h3>Síguenos en redes</h3>
+          <div class="social-grid">
+            {
+              redesSociales.map((red, index) => (
+                <a
+                  href={red.url}
+                  class="social-item"
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="social-icon">{red.icono}</span>
+                  <div class="social-text">
+                    <strong>{red.plataforma}</strong>
+                    <span>{red.usuario}</span>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="newsletter">
+          <h3>Boletín informativo</h3>
+          <p>Recibe las últimas noticias de la campaña en tu correo</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico" required />
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e6f2ff 100%);
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-form h3,
+  .info-card h3,
+  .social-card h3,
+  .newsletter h3 {
+    font-size: 1.8rem;
+    color: #1a365d;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #4a5568;
+  }
+
+  .checkbox input {
+    width: auto;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: #0052a3;
+  }
+
+  .info-card,
+  .social-card,
+  .newsletter {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .contact-detail .icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail strong {
+    display: block;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-detail p {
+    margin: 0.25rem 0;
+    color: #718096;
+    font-size: 0.95rem;
+  }
+
+  .social-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .social-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .social-item:hover {
+    transform: translateX(5px);
+    background: #e6f2ff;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+
+  .social-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-text strong {
+    color: #2d3748;
+  }
+
+  .social-text span {
+    color: #718096;
+    font-size: 0.9rem;
+  }
+
+  .newsletter p {
+    color: #718096;
+    margin-bottom: 1.5rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+  }
+
+  .newsletter-form button {
+    padding: 0.75rem 1.5rem;
+    background: #38a169;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .newsletter-form button:hover {
+    background: #2f855a;
+  }
+
+  @media (max-width: 992px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 3rem 1rem;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  // Manejo del formulario de contacto
+  document
+    .getElementById("contactForm")
+    ?.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Aquí iría la lógica para enviar el formulario
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+
+      // Simulación de envío exitoso
+      alert(
+        "¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto."
+      );
+      this.reset();
+    });
+
+  // Manejo del newsletter
+  document
+    .querySelector(".newsletter-form")
+    ?.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+
+      // Simulación de suscripción exitosa
+      alert(`¡Gracias por suscribirte con el correo: ${email}!`);
+      this.reset();
+    });
+
+  // Simulación del botón de video
+  document
+    .querySelector(".play-button")
+    ?.addEventListener("click", function () {
+      // Aquí iría la lógica para abrir/reproducir el video
+      alert("Reproduciendo video de la candidata...");
+    });
+</script>

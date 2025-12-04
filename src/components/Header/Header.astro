@@ -1,0 +1,129 @@
+---
+export interface Props {
+  nombre: string;
+  cargo: string;
+}
+
+const { nombre, cargo } = Astro.props;
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-logo">
+      <a href="/">
+        <img
+          src="/images/logo.svg"
+          alt={`${nombre} - ${cargo}`}
+          width="200"
+          height="60"
+        />
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#biografia">Biografía</a></li>
+        <li><a href="#propuestas">Propuestas</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto" class="btn-contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header-logo img {
+    height: 60px;
+    width: auto;
+  }
+
+  .header-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  .header-nav a:hover {
+    color: #0066cc;
+  }
+
+  .btn-contacto {
+    background: #0066cc;
+    color: white !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    transition: background 0.3s;
+  }
+
+  .btn-contacto:hover {
+    background: #0052a3;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .header-nav {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .header .container {
+      padding: 1rem;
+    }
+  }
+</style>

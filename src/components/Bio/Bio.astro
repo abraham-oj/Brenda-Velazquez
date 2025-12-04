@@ -1,0 +1,223 @@
+---
+export interface Props {
+  biografia: string;
+  experiencia: string[];
+  propuestas: string[];
+}
+
+const { biografia, experiencia, propuestas } = Astro.props;
+---
+
+<section id="biografia" class="bio-section">
+  <div class="container">
+    <h2 class="section-title">Biografía</h2>
+
+    <div class="bio-content">
+      <div class="bio-main">
+        <div class="bio-image">
+          <img
+            src="/images/bio/foto-profesional.jpg"
+            alt="María González en su oficina"
+            width="500"
+            height="600"
+          />
+        </div>
+
+        <div class="bio-text">
+          <h3>Mi Historia</h3>
+          <p>{biografia}</p>
+
+          <div class="bio-stats">
+            <div class="stat">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Años de Experiencia</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Proyectos Realizados</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Compromiso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bio-details">
+        <div class="experience">
+          <h3>Experiencia Profesional</h3>
+          <ul>
+            {experiencia.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </div>
+
+        <div class="proposals">
+          <h3 id="propuestas">Principales Propuestas</h3>
+          <ul>
+            {
+              propuestas.map((item, index) => (
+                <li key={index}>
+                  <span class="proposal-icon">✓</span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bio-section {
+    padding: 5rem 2rem;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #1a365d;
+    margin-bottom: 3rem;
+  }
+
+  .bio-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .bio-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .bio-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .bio-text h3 {
+    font-size: 2rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-bottom: 2rem;
+  }
+
+  .bio-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: #718096;
+  }
+
+  .bio-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .experience h3,
+  .proposals h3 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-primary);
+  }
+
+  .experience ul,
+  .proposals ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .experience li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+    font-size: 1.1rem;
+  }
+
+  .proposals li {
+    padding: 1rem 0;
+    color: #4a5568;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .proposal-icon {
+    color: #38a169;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .bio-main {
+      grid-template-columns: 1fr;
+    }
+
+    .bio-details {
+      grid-template-columns: 1fr;
+    }
+
+    .bio-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bio-section {
+      padding: 3rem 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bio-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+:root {
+  --green-dark: #004d25;
+  --green-light: #76bc21;
+  /* Cambio: Fondo "Crema Tecnológica" (Off-white) para no lastimar la vista */
+  --bg-color: #f0f2f5;
+  --text-main: #2d3748;
+  --font-head: "Playfair Display", serif;
+  --font-body: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  color: var(--green-dark);
+}
+
+/* --- CLASES DE ANIMACIÓN (SCROLL REVEAL) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar personalizada verde */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green-dark);
+  border-radius: 5px;
+}

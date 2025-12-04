@@ -1,0 +1,54 @@
+---
+// Generamos el array dinámicamente o manualmente si queremos descripciones específicas
+const fotos = [
+  {
+    src: "/images/gallery/evento-1.jpg",
+    desc: "Recorrido y acercamiento con compañeros",
+  },
+  {
+    src: "/images/gallery/evento-2.jpg",
+    desc: "Escuchando las necesidades de la base",
+  },
+  { src: "/images/gallery/evento-3.jpg", desc: "Unidad y fortaleza sindical" },
+  { src: "/images/gallery/evento-4.jpg", desc: "Juntos vamos a lograrlo" },
+  {
+    src: "/images/gallery/evento-5.jpg",
+    desc: "Apoyo total a la Planilla Verde",
+  },
+  {
+    src: "/images/gallery/evento-6.jpg",
+    desc: "Compromiso con la transparencia",
+  },
+  // Agrega más líneas según cuantas fotos hayas puesto en la carpeta
+];
+---
+
+<section id="galeria" class="gallery-section">
+  <div class="container">
+    <h2 class="section-title">Nuestra Campaña en Imágenes</h2>
+    <p class="section-subtitle">
+      Evidencia de un movimiento real y cercano a la gente.
+    </p>
+
+    <div class="gallery-grid">
+      {
+        fotos.map((foto, index) => (
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img
+                src={foto.src}
+                alt={`Evento de campaña ${index + 1}`}
+                loading="lazy"
+                width="400"
+                height="300"
+              />
+              <div class="gallery-overlay">
+                <p>{foto.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

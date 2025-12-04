@@ -1,0 +1,93 @@
+---
+/* ... (El script de arriba se mantiene igual) ... */
+export interface Props {
+  nombre: string;
+  cargo: string;
+  lema: string;
+  partido: string;
+}
+
+const { nombre, cargo, lema, partido } = Astro.props;
+---
+
+<section id="inicio" class="hero">
+  <div class="hero-background">
+    <img
+      src="/images/hero/portada-principal.jpg"
+      alt={`${nombre} - ${cargo}`}
+      width="1920"
+      height="1080"
+    />
+    <div class="overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-text">
+        <div class="badge">{partido}</div>
+        <h1 class="hero-title">Brenda<br />Velázquez</h1>
+        <h2 class="hero-subtitle">{cargo}</h2>
+        <p class="hero-lema">{lema}</p>
+
+        <div class="hero-actions">
+          <a href="#propuestas" class="btn-primary">Ver Propuestas</a>
+          <a href="#contacto" class="btn-secondary">Súmate al Equipo</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="/images/hero/foto-candidata.png"
+          alt={`${nombre}`}
+          width="400"
+          height="500"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ... (Estilos estructurales iguales) ... */
+
+  /* CAMBIO CLAVE: El Degradado Verde */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Degradado de Verde Oscuro a Verde Claro semi-transparente */
+    background: linear-gradient(
+      90deg,
+      rgba(0, 77, 37, 0.9) 0%,
+      rgba(118, 188, 33, 0.6) 100%
+    );
+  }
+
+  .badge {
+    display: inline-block;
+    background: #ffffff; /* Fondo blanco */
+    color: #004d25; /* Texto verde oscuro */
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ... (Resto de estilos) ... */
+
+  .btn-primary {
+    background: #76bc21; /* Verde claro */
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #5a9615;
+    transform: translateY(-2px);
+  }
+</style>
