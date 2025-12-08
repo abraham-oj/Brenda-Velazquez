@@ -1,31 +1,80 @@
 ---
-const videos = [
-  { src: "/videos/campaign-video-1.mp4", titulo: "Mensaje a la Base" },
-  { src: "/videos/campaign-video-2.mp4", titulo: "Recorrido Sindical" },
-  { src: "/videos/campaign-video-3.mp4", titulo: "Nuestras Propuestas" },
-  { src: "/videos/campaign-video-4.mp4", titulo: "La Fuerza Verde" },
+// 1. DATOS: ¡Usamos el formato de embed de YouTube para un rendimiento superior!
+const videoNoticias = [
+  // 5 videos originales con descripciones largas
+  {
+    titulo: "Secretaría de Medio Ambiente",
+    desc: "Hoy estuvimos en la Secretaría de Medio Ambiente, Desarrollo Sustentable y Ordenamiento Territorial, y salgo profundamente agradecida por el tiempo, la escucha y el apoyo de cada una y cada uno de ustedes. 🌿✨",
+    embedUrl: "https://www.youtube.com/embed/9TUyFFyS-IU",
+  },
+  {
+    titulo: "Secretaría de Movilidad y Transporte",
+    desc: "Hoy en la Secretaría de Movilidad y Transporte me abrieron las puertas y las ideas fluyeron mejor que un semáforo en verde. 🚦✨ Gracias por escuchar mis propuestas y por todo el apoyo, me voy muy contenta y con el ánimo hasta arriba.",
+    embedUrl: "https://www.youtube.com/embed/oPY1guFi9B8",
+  },
+  {
+    titulo: "Secretaría de Cultura",
+    desc: "Hoy estuvimos en la Secretaría de Cultura y no saben cuánto me alegra coincidir con compañeras y compañeros tan comprometidos. 🎭✨ ¡De verdad, gracias por abrirme las puertas y el corazón! Cuando caminamos juntos, lo logramos. 💪💫",
+    embedUrl: "https://www.youtube.com/embed/7OTDurvfDlg",
+  },
+  {
+    titulo: "Secretaría de Gobernación (Casa Aguayo)",
+    desc: "Hoy estuvimos en Casa Aguayo, en las oficinas de la Secretaría de Gobernación y salgo más que agradecida. Gracias por abrirme la puerta, por escuchar mis propuestas y por contarme lo que realmente necesitan. 💛✨",
+    embedUrl: "https://www.youtube.com/embed/SiU9mT6M4Dc",
+  },
+  {
+    titulo: "Secretaría de Bienestar",
+    desc: "Hoy cerramos el día en la Secretaría de Bienestar con el corazón bien lleno. Fue una jornada intensa, entre visitas a diferentes Secretarías... ¡Juntos vamos a lograrlo!",
+    embedUrl: "https://www.youtube.com/embed/DZgiFLJ0o94",
+  },
+  // 4 videos nuevos con descripciones genéricas (Agregarás los textos de redes después)
+  {
+    titulo: "Visita de Campaña 6",
+    desc: "Seguimos recorriendo las secretarías y escuchando a la base sindical. ¡El cambio verdadero se construye con unidad!",
+    embedUrl: "https://www.youtube.com/embed/APyfaihQKOs",
+  },
+  {
+    titulo: "Visita de Campaña 7",
+    desc: "La fuerza de nuestro movimiento está en la gente. Gracias por abrirnos sus puertas.",
+    embedUrl: "https://www.youtube.com/embed/vFEYoRPzyAo",
+  },
+  {
+    titulo: "Visita de Campaña 8",
+    desc: "Comprometidos con la justicia y la transparencia para todos los compañeros.",
+    embedUrl: "https://www.youtube.com/embed/QgP_WZ0Zl3A",
+  },
+  // OMITIMOS EL SHORT DE YOUTUBE QUE VA EN EL HERO PARA EVITAR DUPLICADOS
 ];
 ---
 
-<section id="videos" class="video-section">
+<section id="videos-noticias" class="video-section">
   <div class="container">
-    <h2 class="section-title">Mensajes de Viva Voz</h2>
+    <h2 class="section-title">Actualidad de Campaña en Video</h2>
     <p class="section-subtitle">
-      Escucha nuestras propuestas y siente la energía del movimiento.
+      Recorridos y mensajes de viva voz de Brenda Velázquez Batana.
     </p>
 
     <div class="video-grid">
       {
-        videos.map((video) => (
+        videoNoticias.map((video) => (
           <div class="video-card">
             <div class="video-wrapper">
-              <video controls preload="metadata">
-                <source src={video.src} type="video/mp4" />
-                Tu navegador no soporta video HTML5.
-              </video>
+              {/* USAMOS IFRAME para incrustación de YouTube */}
+              <iframe
+                src={video.embedUrl}
+                title={video.titulo}
+                width="100%"
+                height="100%"
+                style="border:none; overflow:hidden;"
+                scrolling="no"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              />
             </div>
             <div class="video-caption">
               <h3>{video.titulo}</h3>
+              <p>{video.desc}</p>
             </div>
           </div>
         ))
@@ -35,17 +84,16 @@ const videos = [
 </section>
 
 <style>
+  /* Mantenemos los estilos originales pero ajustados para el iframe y las descripciones */
   .video-section {
     padding: 5rem 2rem;
-    background: #ffffff; /* Fondo limpio */
+    background: #ffffff;
   }
 
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(450px, 1fr)
-    ); /* 2 columnas en PC */
+    /* Ajustado para 2 columnas en PC y 1 en móvil */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
   }
@@ -54,48 +102,58 @@ const videos = [
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 77, 37, 0.15); /* Sombra verde oscura */
+    box-shadow: 0 10px 30px rgba(0, 77, 37, 0.15);
     border: 1px solid #e2e8f0;
     transition: transform 0.3s ease;
   }
 
   .video-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(118, 188, 33, 0.25); /* Sombra verde claro al hover */
+    box-shadow: 0 15px 40px rgba(118, 188, 33, 0.25);
   }
 
   .video-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* Aspect Ratio 16:9 (Youtube style) */
+    /* Mantiene el aspecto 16:9, crucial para el iframe de YouTube */
+    padding-top: 56.25%;
     background: black;
   }
 
-  video {
+  /* Asegura que el iframe cubra el 16:9 */
+  .video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
 
   .video-caption {
     padding: 1.5rem;
     background: linear-gradient(to right, #f8fcf4, #ffffff);
-    border-top: 4px solid var(--color-primary); /* Línea verde decorativa */
+    border-top: 4px solid #76bc21;
   }
 
   .video-caption h3 {
-    margin: 0;
-    color: var(--color-secondary); /* Verde oscuro */
-    font-size: 1.2rem;
-    text-align: center;
+    margin-top: 0;
+    color: #004d25;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
   }
 
-  @media (max-width: 768px) {
+  .video-caption p {
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
     .video-grid {
-      grid-template-columns: 1fr; /* 1 columna en móvil */
+      grid-template-columns: 1fr;
+    }
+    .video-card {
+      max-width: 500px;
+      margin: 0 auto;
     }
   }
 </style>
