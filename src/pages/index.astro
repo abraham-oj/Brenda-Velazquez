@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import FloatingNav from "../components/FloatingNav.astro";
-// 💡 NUEVA IMPORTACIÓN: Importamos el componente de videos optimizado
+// 💡 Importamos el componente de videos optimizado
 import VideosNoticias from "../components/videos/videos.astro";
 
 const propuestas = [
@@ -28,38 +28,26 @@ const galeriaFotos = Array.from(
 <Layout title="Brenda Velázquez - Planilla Verde">
   <FloatingNav />
 
-  {/* 💥 NUEVO HERO: Video Vertical + Imagen de Alto Impacto 💥 */}
-  <header class="new-hero-split">
-    <div class="hero-panel hero-video-panel">
-      {
-        /* Video Vertical (Instagram Reel embed) - Usamos el embed del Short para mejor rendimiento */
-      }
-      <div class="vertical-video-wrapper">
-        <iframe
-          src="https://youtube.com/shorts/r0KcRqgCRVM?feature=share"
-          title="Video Vertical de Campaña"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="hero-panel hero-image-panel">
-      {/* Imagen de Alto Impacto (hero-1.jpg) y el texto de la campaña */}
-      <div class="campaign-image-container">
+  {/* 💥 HERO FINAL: IMAGEN DE MARCA CENTRALIZADA Y LIMPIA 💥 */}
+  <header class="clean-hero-final">
+    <div class="hero-content-container reveal active">
+      {/* 1. Imagen de Marca (Ahora con la ruta corregida) */}
+      <div class="main-image-wrapper">
         <img
           src="/images/hero-1.jpg"
-          alt="Brenda Velázquez - Esperanza en un Mejor Sindicato"
-          loading="eager"
+          alt="Brenda Velázquez Batana - Esperanza en un Mejor Sindicato"
           class="hero-main-image"
+          loading="eager"
         />
-        <div class="campaign-tagline">
-          <h1 class="main-title">
-            EL CAMBIO<br /><span class="highlight">VERDADERO</span>
-          </h1>
-          <div class="separator"></div>
-          <p class="date-line">PUEBLA, PUE. — DICIEMBRE 2025</p>
-        </div>
+      </div>
+
+      {/* 2. Tagline de Campaña */}
+      <div class="campaign-tagline">
+        <h1 class="main-title">
+          EL CAMBIO<br /><span class="highlight">VERDADERO</span>
+        </h1>
+        <div class="separator"></div>
+        <p class="date-line">PUEBLA, PUE. — DICIEMBRE 2025</p>
       </div>
     </div>
   </header>
@@ -90,7 +78,7 @@ const galeriaFotos = Array.from(
     <section id="newsWall" class="news-section hidden">
       <div class="container">
         {
-          /* Llama al componente que ahora muestra los videos de YouTube optimizados */
+          /* Llama al componente que ahora muestra los 9 videos de YouTube optimizados */
         }
         <VideosNoticias />
       </div>
@@ -141,7 +129,7 @@ const galeriaFotos = Array.from(
       <div class="credits">
         <p>
           Desarrollado con <span class="heart">❤</span> por <a
-            href="https://linkedin.com/in/zaidojeda"
+            href="https://www.linkedin.com/in/abraham-o-perez"
             target="_blank">Abraham Ojeda Web Dev</a
           >
         </p>
@@ -151,57 +139,41 @@ const galeriaFotos = Array.from(
 </Layout>
 
 <style>
-  /* 💥 ESTILOS DEL NUEVO HERO DE CONTENIDO 💥 */
-  .new-hero-split {
-    display: flex;
-    min-height: 85vh;
-    background: linear-gradient(
-      to right,
-      #f0f4f0 50%,
-      #ffffff 100%
-    ); /* Cambiamos el degradado */
-    position: relative;
-    overflow: hidden;
-    padding-top: 5rem; /* Espacio para el header fijo */
-  }
-
-  .hero-panel {
-    flex: 1;
+  /* 💥 HERO FINAL: IMAGEN DE MARCA CENTRALIZADA Y LIMPIA 💥 */
+  .clean-hero-final {
+    background: #f0f4f0; /* Fondo muy claro y suave */
+    padding: 6rem 2rem 2rem 2rem; /* Espacio para el Header fijo */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    min-height: 85vh;
   }
 
-  .hero-video-panel {
-    flex-direction: column;
-    padding-right: 1rem;
-    background: #000;
-  }
-
-  .hero-image-panel {
-    flex-direction: column;
-    padding-left: 1rem;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05); /* Sutil separación */
-    background: #ffffff;
-  }
-
-  .campaign-image-container {
-    width: 100%;
-    max-width: 450px; /* Limita el ancho de la imagen principal */
+  .hero-content-container {
+    max-width: 900px;
+    margin: 0 auto;
     text-align: center;
+  }
+
+  .main-image-wrapper {
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
   }
 
   .hero-main-image {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: block;
+    /* Ajuste para que la imagen no sea demasiado grande en desktop */
+    max-height: 550px;
+    object-fit: contain;
   }
 
   .campaign-tagline {
     margin-top: 1.5rem;
-    text-align: center;
   }
 
   .main-title {
@@ -226,24 +198,6 @@ const galeriaFotos = Array.from(
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #4b5563;
-  }
-
-  /* Panel de Video Vertical */
-  .vertical-video-wrapper {
-    width: 100%;
-    height: 80vh; /* Altura generosa para video vertical */
-    max-height: 700px;
-    max-width: 400px; /* Ancho de video vertical */
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-  .vertical-video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
   /* ------------------------------- */
 
@@ -291,31 +245,12 @@ const galeriaFotos = Array.from(
 
   /* --- RESPONSIVIDAD --- */
   @media (max-width: 900px) {
-    .new-hero-split {
-      flex-direction: column;
-      height: auto;
+    .clean-hero-final {
       min-height: auto;
       padding-top: 4rem;
     }
-    .hero-panel {
-      padding: 1rem 0;
-    }
-    .hero-video-panel {
-      padding-right: 0;
-      order: 1; /* Poner el video arriba en móvil */
-    }
-    .hero-image-panel {
-      padding-left: 0;
-      box-shadow: none;
-      order: 2; /* Poner la imagen/texto debajo del video */
-    }
     .main-title {
       font-size: 2.5rem;
-    }
-    .vertical-video-wrapper {
-      height: 50vh;
-      max-width: 90%;
-      margin: 0 auto;
     }
   }
 
@@ -388,6 +323,22 @@ const galeriaFotos = Array.from(
   .credits a {
     color: #76bc21;
     text-decoration: none;
+  }
+
+  /* 💥 FIX MÓVIL FOOTER 💥 */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .copyright {
+      order: 2; /* Mueve copyright al medio/final */
+    }
+    .credits {
+      order: 1; /* Mueve credits arriba */
+      margin-bottom: 0.5rem; /* Separación de copyright */
+      text-align: center;
+    }
   }
 </style>
 
